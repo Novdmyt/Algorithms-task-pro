@@ -16,7 +16,7 @@ public class App {
         List<Product> list = provider.getData();
         getOutput(list);
         DataService service = new DataService();
-        int index = service.search(list, priceSearch);
+        int index = service.searchPrice(list, priceSearch);
         getOutput(list, priceSearch, index);
     }
 
@@ -28,7 +28,7 @@ public class App {
 
     private static void getOutput(List<Product> list) {
         System.out.print("Initial data:\n");
-
+        AtomicInteger count = new AtomicInteger(1);
         for (Product product : list)
             System.out.println(count.getAndIncrement() + ") " +
                     product.getName() + ", USD " + product.getPrice());
